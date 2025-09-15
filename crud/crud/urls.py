@@ -1,5 +1,5 @@
 """
-URL configuration for bienvenida project.
+URL configuration for crud project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -15,12 +15,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-
-from . import views
+from django.urls import include, path 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path ('inicio/', views.mostrar_bienvenida, name="inicio"),
-    path('productos/', views.lista_productos, name='productos'), 
+    path("", include("inventario.urls")),
 ]
