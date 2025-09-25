@@ -1,0 +1,40 @@
+{% extends 'inventario/base.html' %}
+
+{% block title %}Lista de Ventas{% endblock %}
+
+{% block content %}
+<h1 class="text-2xl font-bold mb-4">Lista de Ventas</h1>
+<a href="{% url 'nueva_venta' %}" class="bg-green-500 text-white px-4 py-2 rounded mb-4 inline-block hover:scale-105 transition-all ease-in">Nueva Venta</a>
+<table class="min-w-full bg-white">
+  <thead>
+    <tr>
+      <th class="py-2 px-4 border-b">ID</th>
+      <th class="py-2 px-4 border-b">Cliente</th>
+      <th class="py-2 px-4 border-b">Producto</th>
+      <th class="py-2 px-4 border-b">Cantidad</th>
+      <th class="py-2 px-4 border-b">Total</th>
+      <th class="py-2 px-4 border-b">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for venta in ventas %}
+      <tr>
+        <td class="py-2 px-4 border-b">{{ venta.id }}</td>
+        <td class="py-2 px-4 border-b">{{ venta.cliente.rut }}</td>
+        <td class="py-2 px-4 border-b">{{ venta.producto.nombre }}</td>
+        <td class="py-2 px-4 border-b">{{ venta.cantidad }}</td>
+        <td class="py-2 px-4 border-b">{{ venta.total }}</td>
+        <td class="py-2 px-4 border-b">
+          <menu class="flex flex-row gap-2 items-center">
+            <a href="{% url 'detalle_venta' venta.id %}" class="bg-blue-500 text-white px-2 py-1 rounded hover:scale-105">Ver</a>
+            <a href="{% url 'editar_venta' venta.id %}" class="bg-yellow-500 text-white px-2 py-1 rounded hover:scale-105">Editar</a>
+            <a href="{% url 'eliminar_venta' venta.id %}" class="bg-red-500 text-white px-2 py-1 rounded hover:scale-105">Eliminar</a>
+          </menu>
+        </td>
+      </tr>
+    {% empty %}
+      <tr><td colspan="6" class="text-center py-4">No hay ventas registradas.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

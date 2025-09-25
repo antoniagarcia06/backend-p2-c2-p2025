@@ -1,0 +1,10 @@
+<h1>Eliminar Venta #{{ venta.id }}</h1>
+
+<p>¿deseas eliminar esta venta?</p>
+
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Sí, eliminar</button>
+</form>
+
+<a href="{% url 'lista_ventas' %}">Cancelar</a>
