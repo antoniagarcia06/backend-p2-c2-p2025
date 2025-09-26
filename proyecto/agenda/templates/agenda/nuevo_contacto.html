@@ -1,0 +1,49 @@
+{% extends 'agenda/base.html' %}
+
+{% block title %}Nuevo Contacto{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-md">
+  <h1 class="text-3xl font-bold text-gray-800 mb-6">Agregar Nuevo Contacto</h1>
+  <form method="post" class="space-y-4">
+    {% csrf_token %}
+    
+    <div>
+      <label class="block font-medium text-gray-700">Nombre</label>
+      {{ form.nombre }}
+      {% if form.nombre.errors %}
+      <p class="text-red-600 text-sm mt-1">{{ form.nombre.errors }}</p>
+      {% endif %}
+    </div>
+
+    <div>
+      <label class="block font-medium text-gray-700">Teléfono</label>
+      {{ form.telefono }}
+      {% if form.telefono.errors %}
+      <p class="text-red-600 text-sm mt-1">{{ form.telefono.errors }}</p>
+      {% endif %}
+    </div>
+
+    <div>
+      <label class="block font-medium text-gray-700">Correo</label>
+      {{ form.correo }}
+      {% if form.correo.errors %}
+      <p class="text-red-600 text-sm mt-1">{{ form.correo.errors }}</p>
+      {% endif %}
+    </div>
+
+    <div>
+      <label class="block font-medium text-gray-700">Dirección</label>
+      {{ form.direccion }}
+      {% if form.direccion.errors %}
+      <p class="text-red-600 text-sm mt-1">{{ form.direccion.errors }}</p>
+      {% endif %}
+    </div>
+
+    <div class="flex justify-end gap-4 mt-4">
+      <a href="{% url 'lista_contactos' %}" class="px-4 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded transition">Cancelar</a>
+      <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded transition">Guardar</button>
+    </div>
+  </form>
+</div>
+{% endblock %}
