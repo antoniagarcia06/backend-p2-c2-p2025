@@ -16,7 +16,7 @@ def exportar_csv(modeladmin, request, queryset):
 
 @admin.register(Contacto)
 class ContactoAdmin(admin.ModelAdmin):
-    list_display = ('nombre', 'email', 'telefono')
+    list_display = ['nombre', 'correo', 'telefono', 'creado_en']  # Cambiar 'email' por 'correo'
     search_fields = ('nombre', 'email')
     actions = [exportar_csv]
 

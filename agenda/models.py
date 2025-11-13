@@ -13,7 +13,8 @@ class Etiqueta(models.Model):
 
 class Contacto(models.Model):
     nombre = models.CharField(max_length=100)
-    email = models.EmailField(unique=True, validators=[EmailValidator()])
+    correo = models.EmailField(unique=True, validators=[EmailValidator()])
+    direccion= models.CharField(max_length=255, blank=True)
     telefono = models.CharField(
         max_length=15,
         validators=[
